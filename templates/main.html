@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result</title>
+    <link rel="stylesheet" href="/static/style.css" />
+    <link rel="stylesheet" href="/static/pages.css" />
+    <style>
+        
+        .button-container {
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            gap: 50px; /* Gap between buttons */
+            margin-top: 50px; /* Gap between buttons */
+          
+		}
+        .predict {
+            margin: 20px; /* Adjust as needed */
+        }
+
+        .btn {
+            padding: 2px 30px;
+            background-color: rgb(255,255,125);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: ;
+        }
+		body {
+            background-image: url('/static/bi1.webp');
+            background-size: cover;
+            background-repeat: no-repeat;
+            height: 100vh; /* Set the height of the body to the viewport height */
+            margin: 0; /* Remove default margin */
+            padding: 0; /* Remove default padding */
+        }
+    </style>
+</head>
+<body>
+	
+    <header>
+	<marquee direction="left" scrollamount="10" class="marquee">
+        <p style="font-size:65px;color:pink">Welcome To Autism Prediction Application!</p>
+    </marquee>
+        <img class="header-logo" src="/static/i1.jpg" alt="" height="200" width="409"  />
+		<img class="header-logo" src="/static/i3.jpg" alt="" height="200" width="400"  />
+		<img class="header-logo" src="/static/i6.png" alt="" height="200" width="400"  />
+    </header>
+
+    <!-- Sliding images -->
+
+    
+
+    <main>
+        <div class="button-container">
+            <div class="predict">
+                <button class="btn"><h2><a href="/index" class="button-link">Test</a></h2></button>
+            </div>
+            <div class="predict">
+                <button class="btn"><h2><a href="/about" class="button-link">About</a></h2></button>
+            </div>
+            <div class="predict">
+                <button class="btn"><h2><a href="/help" class="button-link">Help</a></h2></button>
+            </div>
+        </div>
+    </main>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</body>
+</html>

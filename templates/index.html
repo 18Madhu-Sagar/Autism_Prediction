@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autism Prediction In Toddlers</title>
+    <style>
+        body {
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+					background-image: url("static/image.jpg");
+
+			/* Center and scale the image nicely */
+		  background-position: center;
+		  background-repeat: no-repeat;
+		  background-attachment: fixed;
+		  background-size: cover;
+		  position: right;
+		  min-height: 100px;
+
+        }
+        form {
+
+		  
+
+		  
+            background-color: #cfcce2;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(9, 237, 142, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        label {
+            display: inline-block;
+            width: 175px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        input[type="text"],
+        input[type="number"],
+        select,
+        input[type="radio"] {
+            display: inline-block;
+            vertical-align: middle;
+            margin-bottom: 15px;
+        }
+        input[type="text"],
+        input[type="number"],
+        select {
+            width: calc(100% - 220px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        input[type="radio"] {
+            margin-right: 5px;
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        p {
+            margin-bottom: 5px;
+            color: #555;
+        }
+		.button-container {
+                display: flex;
+                justify-content: flex-start;
+                gap: 20px; /* Adjust the gap as needed */
+            }
+            .predict {
+                margin-right: 20px; /* Adjust the margin as needed */
+            }
+		
+    </style>
+</head>
+<body>
+	
+    <form method="POST" action="{{ url_for('predict') }}">
+	
+	<marquee behavior="scroll" direction="left" scrollamount="10">
+    <h1 style="color:Green;font-family:Castellar" align="center">Autism Prediction In Toddlers</h1></marquee>
+	
+        <label>Child Name</label>
+        <input type='text' size="15" text='Child Name' name='Ch' id="ch" required><br> <br>
+        <label>Child Age in Months</label>
+        <input type='number' text='Child Age' name='age' min="12" max="36" size="5" id='num' required><br><br>
+		<label>Gender</label>
+        <input type="radio" name="gen" value="male" id="ma" required>
+        <label for="male">Male</label>
+        <input type="radio" name="gen" value="female" id="fma">
+        <label for="female">Female</label><br><br>
+        <label for="ethnicity">Select Ethnicity:</label>
+        <select id="ethnicity" id="et" name="ethnicity" required>
+			<option value="11">select</option>
+            <option value="0">Hispanic</option>
+            <option value="1">Latino</option>
+            <option value="2">Native Indian</option>
+            <option value="3">Others</option>
+            <option value="4">Pacifica</option>
+            <option value="5">White European</option>
+            <option value="6">Asian</option>
+            <option value="7">Black</option>
+            <option value="8">Middle Eastern</option>
+            <option value="9">Mixed</option>
+            <option value="10">South Asian</option>
+        </select><br><br>
+        <label>Jaundice</label>
+        <input type="radio" name="Jau" value="yes" required id="jan1">
+        <label for="yes">Yes</label>
+        <input type="radio" name="Jau" value="no" id="jan2">
+        <label for="no">No</label><br><br>
+        <label>If any Family member with Autism</label>
+        <input type="radio" name="fma" value="yes" id="f1" required>
+        <label for="yes">Yes</label>
+        <input type="radio" name="fma" value="no" id="f2">
+        <label for="no">No</label><br><br>
+        <label for="completed_by">Test Completed By:</label>
+        <select id="completed_by" name="completed_by" required>
+			<option value="4">select</option>
+            <option value="0">Family Member</option>
+            <option value="1">Healthcare Professional</option>
+            <option value="2">Others</option>
+        </select><br><br>
+        <p>1. Does the child make eye contact with others?</p>
+        <input type="radio" name="q1" value="yes" id=q11 required>
+        <label for="q1_yes">Yes</label>
+        <input type="radio" name="q1" value="no" id=q12>
+        <label for="q1_no">No</label><br><br>
+        <p>2. Does the child respond to their name when called?</p>
+        <input type="radio" name="q2" value="yes" id=q21 required>
+        <label for="q2_yes">Yes</label>
+        <input type="radio" name="q2" value="no" id=q22>
+        <label for="q2_no">No</label><br><br>
+        <p>3. Does the child point or use gestures to communicate?</p>
+        <input type="radio" name="q3" value="yes" id=q31 required>
+        <label for="q3_yes">Yes</label>
+        <input type="radio" name="q3" value="no" id=q32>
+        <label for="q3_no">No</label><br><br>
+        <p>4. Does the child have difficulty engaging in reciprocal social interactions with others?</p>
+        <input type="radio" name="q4" value="yes" id=q41 required>
+        <label for="q4_yes">Yes</label>
+        <input type="radio" name="q4" value="no" id=q42>
+        <label for="q4_no">No</label><br><br>
+        <p>5. Does the child show an interest in playing with toys or objects in an unusual manner?</p>
+        <input type="radio" name="q5" value="yes" id=q51 required>
+        <label for="q5_yes">Yes</label>
+        <input type="radio" name="q5" value="no" id=q52>
+        <label for="q5_no">No</label><br><br>
+        <p>6. Does the child have difficulty understanding or using language appropriately for their age?</p>
+        <input type="radio" name="q6" value="yes" id=q61 required>
+        <label for="q6_yes">Yes</label>
+        <input type="radio" name="q6" value="no" id=q62>
+        <label for="q6_no">No</label><br><br>
+        <p>7. Does the child have difficulty following social cues or understanding social rules?</p>
+        <input type="radio" name="q7" value="yes" id=q71 required>
+        <label for="q7_yes">Yes</label>
+        <input type="radio" name="q7" value="no" id=q72>
+        <label for="q7_no">No</label><br><br>
+        <p>8. Does the child engage in repetitive behaviors or have restricted interests?</p>
+        <input type="radio" name="q8" value="yes" id=q81 required>
+        <label for="q8_yes">Yes</label>
+        <input type="radio" name="q8" value="no" id=q82>
+        <label for="q8_no">No</label><br><br>
+        <p>9. Does the child have difficulty adapting to changes in routine or transitioning between activities?</p>
+        <input type="radio" name="q9" value="yes" id=q91 required>
+        <label for="q9_yes">Yes</label>
+        <input type="radio" name="q9" value="no" id=q92>
+        <label for="q9_no">No</label><br><br>
+        <p>10. Does the child exhibit any unusual sensory behaviors, such as avoiding certain textures or sounds?</p>
+        <input type="radio" name="q10" value="yes" id=q101  required>
+        <label for="q10_yes">Yes</label>
+        <input type="radio" name="q10" value="no" id=q102>
+		<label for="q10_no">No</label><br><br>
+		<p>11. Does the child respond appropriately to social cues (e.g., smiles, gestures)?</p>
+		<input type="radio" name="q11" value="yes" id="q11_yes" required>
+		<label for="q11_yes">Yes</label>
+		<input type="radio" name="q11" value="no" id="q11_no">
+		<label for="q11_no">No</label><br><br>
+
+		<p>12. Does the child engage in babbling or vocalizations during social interactions?</p>
+		<input type="radio" name="q12" value="yes" id="q12_yes" required>
+		<label for="q12_yes">Yes</label>
+		<input type="radio" name="q12" value="no" id="q12_no">
+		<label for="q12_no">No</label><br><br>
+
+		<p>13. Does the child use gestures to communicate (e.g., waving, pointing)?</p>
+		<input type="radio" name="q13" value="yes" id="q13_yes" required>
+		<label for="q13_yes">Yes</label>
+		<input type="radio" name="q13" value="no" id="q13_no">
+		<label for="q13_no">No</label><br><br>
+
+		<p>14. Does the child show interest in interacting with peers?</p>
+		<input type="radio" name="q14" value="yes" id="q14_yes" required>
+		<label for="q14_yes">Yes</label>
+		<input type="radio" name="q14" value="no" id="q14_no">
+		<label for="q14_no">No</label><br><br>
+
+		<p>15. Does the child follow another person's gaze or point to objects of interest?</p>
+		<input type="radio" name="q15" value="yes" id="q15_yes" required>
+		<label for="q15_yes">Yes</label>
+		<input type="radio" name="q15" value="no" id="q15_no">
+		<label for="q15_no">No</label><br><br>
+
+		<p>16. Does the child understand and respond to others' emotions?</p>
+		<input type="radio" name="q16" value="yes" id="q16_yes" required>
+		<label for="q16_yes">Yes</label>
+		<input type="radio" name="q16" value="no" id="q16_no">
+		<label for="q16_no">No</label><br><br>
+
+		<p>17. Does the child use facial expressions to communicate?</p>
+		<input type="radio" name="q17" value="yes" id="q17_yes" required>
+		<label for="q17_yes">Yes</label>
+		<input type="radio" name="q17" value="no" id="q17_no">
+		<label for="q17_no">No</label><br><br>
+
+		<p>18. Does the child understand and follow simple instructions?</p>
+		<input type="radio" name="q18" value="yes" id="q18_yes" required>
+		<label for="q18_yes">Yes</label>
+		<input type="radio" name="q18" value="no" id="q18_no">
+		<label for="q18_no">No</label><br><br>
+
+		<p>19. Does the child become upset by changes in routine or environment?</p>
+		<input type="radio" name="q19" value="yes" id="q19_yes" required>
+		<label for="q19_yes">Yes</label>
+		<input type="radio" name="q19" value="no" id="q19_no">
+		<label for="q19_no">No</label><br><br>
+
+		<p>20. Does the child become strongly attached to specific objects?</p>
+		<input type="radio" name="q20" value="yes" id="q20_yes" required>
+		<label for="q20_yes">Yes</label>
+		<input type="radio" name="q20" value="no" id="q20_no">
+		<label for="q20_no">No</label><br><br>
+
+		<p>21. Is the child sensitive to certain textures or materials?</p>
+		<input type="radio" name="q21" value="yes" id="q21_yes" required>
+		<label for="q21_yes">Yes</label>
+		<input type="radio" name="q21" value="no" id="q21_no">
+		<label for="q21_no">No</label><br><br>
+
+		<p>22. Does the child show a fascination with spinning objects?</p>
+		<input type="radio" name="q22" value="yes" id="q22_yes" required>
+		<label for="q22_yes">Yes</label>
+		<input type="radio" name="q22" value="no" id="q22_no">
+		<label for="q22_no">No</label><br><br>
+
+		<p>23. Does the child have an atypical response to pain (e.g., seeming not to notice injuries)?</p>
+		<input type="radio" name="q23" value="yes" id="q23_yes" required>
+		<label for="q23_yes">Yes</label>
+		<input type="radio" name="q23" value="no" id="q23_no">
+		<label for="q23_no">No</label><br><br>
+
+		<p>24. Is the child sensitive to certain smells or odors?</p>
+		<input type="radio" name="q24" value="yes" id="q24_yes" required>
+		<label for="q24_yes">Yes</label>
+		<input type="radio" name="q24" value="no" id="q24_no">
+		<label for="q24_no">No</label><br><br>
+
+		<p>25. Is the child sensitive to certain types of lighting or brightness?</p>
+		<input type="radio" name="q25" value="yes" id="q25_yes" required>
+		<label for="q25_yes">Yes</label>
+		<input type="radio" name="q25" value="no" id="q25_no">
+		<label for="q25_no">No</label><br><br>
+
+    
+
+        
+        <div style="text-align: center;">
+			<input type='submit' value='Predict' onclick="promp()">
+		</div>
+		<script>
+			function promp(){
+				var name = document.getElementById("ch").value;
+				var num = document.getElementById("num").value;
+				var maleChecked = document.getElementById("ma").checked;
+				var femaleChecked = document.getElementById("fma").checked;
+				var ethnicity = document.getElementById("ethnicity").value;
+				var jaundiceYes = document.getElementById("jan1").checked;
+				var jaundiceNo = document.getElementById("jan2").checked;
+				var f1 = document.getElementById("f1").checked;
+				var f2 = document.getElementById("f2").checked;
+				var cb = document.getElementById("completed_by").value;
+				var YesChecked1 = document.getElementById("q11").checked;
+				var NoChecked1 = document.getElementById("q12").checked;
+				var YesChecked2 = document.getElementById("q21").checked;
+				var NoChecked2 = document.getElementById("q22").checked;
+				var YesChecked3 = document.getElementById("q31").checked;
+				var NoChecked3 = document.getElementById("q32").checked;
+				var YesChecked4 = document.getElementById("q41").checked;
+				var NoChecked4 = document.getElementById("q42").checked;
+				var YesChecked5 = document.getElementById("q51").checked;
+				var NoChecked5 = document.getElementById("q52").checked;
+				var YesChecked6 = document.getElementById("q61").checked;
+				var NoChecked6 = document.getElementById("q62").checked;
+				var YesChecked7 = document.getElementById("q71").checked;
+				var NoChecked7 = document.getElementById("q72").checked;
+				var YesChecked8 = document.getElementById("q81").checked;
+				var NoChecked8 = document.getElementById("q82").checked;
+				var YesChecked9 = document.getElementById("q91").checked;
+				var NoChecked9 = document.getElementById("q92").checked;
+				var YesChecked10 = document.getElementById("q101").checked;
+				var NoChecked10 = document.getElementById("q102").checked;
+				var YesChecked11 = document.getElementById("q11_yes").checked;
+				var NoChecked11 = document.getElementById("q11_no").checked;
+				var YesChecked12 = document.getElementById("q12_yes").checked;
+				var NoChecked12 = document.getElementById("q12_no").checked;
+				var YesChecked13 = document.getElementById("q13_yes").checked;
+				var NoChecked13 = document.getElementById("q13_no").checked;
+				var YesChecked14 = document.getElementById("q14_yes").checked;
+				var NoChecked14 = document.getElementById("q14_no").checked;
+				var YesChecked15 = document.getElementById("q15_yes").checked;
+				var NoChecked15 = document.getElementById("q15_no").checked;
+				var YesChecked16 = document.getElementById("q16_yes").checked;
+				var NoChecked16 = document.getElementById("q16_no").checked;
+				var YesChecked17 = document.getElementById("q17_yes").checked;
+				var NoChecked17 = document.getElementById("q17_no").checked;
+				var YesChecked18 = document.getElementById("q18_yes").checked;
+				var NoChecked18 = document.getElementById("q18_no").checked;
+				var YesChecked19 = document.getElementById("q19_yes").checked;
+				var NoChecked19 = document.getElementById("q19_no").checked;
+				var YesChecked20 = document.getElementById("q20_yes").checked;
+				var NoChecked20 = document.getElementById("q20_no").checked;
+				var YesChecked21 = document.getElementById("q21_yes").checked;
+				var NoChecked21 = document.getElementById("q21_no").checked;
+				var YesChecked22 = document.getElementById("q22_yes").checked;
+				var NoChecked22 = document.getElementById("q22_no").checked;
+				var YesChecked23 = document.getElementById("q23_yes").checked;
+				var NoChecked23 = document.getElementById("q23_no").checked;
+				var YesChecked24 = document.getElementById("q24_yes").checked;
+				var NoChecked24 = document.getElementById("q24_no").checked;
+				var YesChecked25 = document.getElementById("q25_yes").checked;
+				var NoChecked25 = document.getElementById("q25_no").checked;
+				
+			  if (name === "" || (num === "")|| ethnicity === "11" || cb=="4" || (!maleChecked && !femaleChecked) || (!jaundiceYes && !jaundiceNo) || (!f1 && !f2) || 
+			  (!YesChecked1 && !NoChecked1) || (!YesChecked2 && !NoChecked2) || (!YesChecked3 && !NoChecked3) || (!YesChecked4 && !NoChecked4) || (!YesChecked5 && !NoChecked5) || 
+			  (!YesChecked6 && !NoChecked6) || (!YesChecked7 && !NoChecked7) || (!YesChecked8 && !NoChecked8) || (!YesChecked9 && !NoChecked9) || (!YesChecked10 && !NoChecked10)|| 
+			  (!YesChecked11 && !NoChecked11) || (!YesChecked12 && !NoChecked12) || (!YesChecked13 && !NoChecked13) || (!YesChecked14 && !NoChecked14) || (!YesChecked15 && !NoChecked15) || 
+			  (!YesChecked16 && !NoChecked16) || (!YesChecked17 && !NoChecked17) || (!YesChecked18 && !NoChecked18) || (!YesChecked19 && !NoChecked19) || (!YesChecked20 && !NoChecked20) || 
+			  (!YesChecked21 && !NoChecked21) || (!YesChecked22 && !NoChecked22) || (!YesChecked23 && !NoChecked23) || (!YesChecked24 && !NoChecked24) || (!YesChecked25 && !NoChecked25) ) {
+				alert("Please complete all fields.");
+				return false; // Prevent form submission
+				alert("Form is successfully submited....");
+				}
+				alert("Form submited successfully")
+			
+			}
+		</script>
+        
+	
+    </form>
+	
+	
+</body>
+</html>
