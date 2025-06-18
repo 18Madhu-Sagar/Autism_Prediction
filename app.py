@@ -1,10 +1,15 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, redirect, url_for
 import pickle
 import numpy as np
+import os
 
 model = pickle.load(open('autism.pkl', 'rb'))
 
 app = Flask(__name__)
+
+@app.route('/')
+def root():
+    return redirect(url_for('home'))
 
 @app.route('/home')
 def home():
@@ -63,7 +68,7 @@ def predict():
         
     except Exception as e:
         return render_template('error.html', error="please fill all inputs currectly")
-import os
+
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
